@@ -15,7 +15,9 @@ import EditableTodoList from "./EditableTodoList";
  * App -> TodoApp -> { TodoForm, EditableTodoList }
  */
 
-function TodoApp() {
+function TodoApp({initialTodos}) {
+
+  const [todos, setTodos] = useState(initialTodos)
 
   /** add a new todo to list */
   function create(newTodo) {
@@ -34,7 +36,7 @@ function TodoApp() {
         <div className="row">
 
           <div className="col-md-6">
-            <EditableTodoList /> OR
+            <EditableTodoList todos={todos} update={update} remove={remove}/> OR
             <span className="text-muted">You have no todos.</span>
           </div>
 
