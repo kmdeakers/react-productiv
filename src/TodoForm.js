@@ -12,6 +12,7 @@ import React, { useState } from "react";
 
 function TodoForm({initialFormData, handleSave}) {
   const [formData, setFormData] = useState({ initialFormData });
+  console.log("formData: ", formData)
   /** Update form input. */
   function handleChange(evt) {
     const fieldName = evt.target.name;
@@ -40,7 +41,7 @@ function TodoForm({initialFormData, handleSave}) {
               className="form-control"
               placeholder="Title"
               onChange={handleChange}
-              value="FIXME"
+              value={formData.title}
               aria-label="Title"
           />
         </div>
@@ -52,7 +53,7 @@ function TodoForm({initialFormData, handleSave}) {
               className="form-control"
               placeholder="Description"
               onChange={handleChange}
-              value="FIXME"
+              value={formData.description}
               aria-label="Description"
           />
         </div>
@@ -64,7 +65,7 @@ function TodoForm({initialFormData, handleSave}) {
             </label>
             <select id="newTodo-priority"
                     name="priority"
-                    value="FIXME"
+                    value={formData.priority}
                     onChange={handleChange}
                     className="form-control form-control-sm d-inline-flex"
             >

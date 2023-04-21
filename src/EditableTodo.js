@@ -22,14 +22,19 @@ function EditableTodo({todo, update, remove}) {
   }
 
   /** Call remove fn passed to this. */
-  function handleDelete() { }
+  function handleDelete() {
+    remove(todo.id)
+   }
 
   /** Edit form saved; toggle isEditing and update in ancestor. */
-  function handleSave(formData) { }
+  function handleSave(formData) {
+    update(formData);
+    setIsEditing(false);
+   }
 
   function handleRender() {
     if (isEditing === true) {
-      return (<TodoForm />)
+      return (<TodoForm handleSave={handleSave} initialFormData={{todo}}/>)
     } else {
       return (
         <div className="mb-3">
