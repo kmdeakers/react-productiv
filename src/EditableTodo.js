@@ -34,7 +34,7 @@ function EditableTodo({todo, update, remove}) {
 
   function handleRender() {
     if (isEditing === true) {
-      return (<TodoForm handleSave={handleSave} initialFormData={{todo}}/>)
+      return (<TodoForm handleSave={handleSave} initialFormData={todo}/>)
     } else {
       return (
         <div className="mb-3">

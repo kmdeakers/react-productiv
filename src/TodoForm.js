@@ -11,9 +11,10 @@ import React, { useState } from "react";
  */
 
 function TodoForm({initialFormData, handleSave}) {
-  const [formData, setFormData] = useState({ initialFormData });
-  console.log("formData: ", formData)
+  const [formData, setFormData] = useState( initialFormData );
+  console.log("formData: ", {initialFormData})
   /** Update form input. */
+
   function handleChange(evt) {
     const fieldName = evt.target.name;
     const value = evt.target.value;
@@ -28,7 +29,7 @@ function TodoForm({initialFormData, handleSave}) {
   function handleSubmit(evt) {
       evt.preventDefault();
       handleSave(formData);
-      setFormData(initialFormData);
+      // setFormData(initialFormData);
    }
 
   return (
