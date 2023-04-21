@@ -12,12 +12,12 @@ import EditableTodo from "./EditableTodo";
  */
 
 function EditableTodoList({ todos, update, remove }) {
-
+//TODO: need key prop on render EditableTodo and reformat
   // Iterate through todos and generate correct # of todos
   function renderEditableTodos() {
     return (
       <div>
-        {todos.map(todo => (<EditableTodo todo={todo} update={update} remove={remove} />))}
+        {todos.map(todo => (<EditableTodo key={todo.id} todo={todo} update={update} remove={remove} />))}
       </div>
     );
   }

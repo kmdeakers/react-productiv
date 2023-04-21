@@ -18,40 +18,39 @@ import TodoForm from "./TodoForm"
 
 function TodoApp({ initialTodos }) {
   const [todos, setTodos] = useState(initialTodos);
-  const placeholderForm = {title: "", description: "", priority: 1}
+
 
   /** add a new todo to list */
   function create(todo) {
-    let newTodo = {...todo, id: uuid()}
+    let newTodo = { ...todo, id: uuid() }
     setTodos(todos => [...todos, newTodo])
   }
 
   /** update a todo with updatedTodo */
   function update(updatedTodo) {
-    ///updated todo: {id: , title: ,description: }
-    const newTodos = todos.map(t => {
+
+    setTodos(currTodos => currTodos.map(t => {
       if (t.id === updatedTodo.id) {
         return updatedTodo;
       } else {
         return t;
       }
-    });
-    setTodos(newTodos);
+    }))
   }
 
   /** delete a todo by id */
   function remove(id) {
-    const newTodos = todos.filter(t => t.id !== id);
-    setTodos(newTodos);
+    setTodos(currTodos => currTodos.filter(t => t.id !== id));
   }
 
   return (
     <main className="TodoApp">
       <div className="row">
 
+
         <div className="col-md-6">
-          <EditableTodoList todos={todos} update={update} remove={remove} />
-          <span className="text-muted">You have no todos.</span>
+          {todos.length !== 0 && <EditableTodoList todos={todos} update={update} remove={remove} />}
+          {todos.length === 0 && <span className="text-muted">You have no todos.</span>}
         </div>
 
         <div className="col-md-6">
@@ -62,7 +61,7 @@ function TodoApp({ initialTodos }) {
 
           <section>
             <h3 className="mb-3">Add Nü</h3>
-            <TodoForm initialFormData={placeholderForm} handleSave={create}/>
+            <TodoForm  handleSave={create} />
           </section>
         </div>
 
